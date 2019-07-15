@@ -15,7 +15,7 @@ jobs:
 #         command: sudo chmod +x ./gradlew
       - run:
           name: licenses
-          command: ~/Library/Android/sdk/tools/bin/sdkmanager --licenses
+          command: /opt/android/sdk/tools/bin/sdkmanager --licenses # from "docker run"
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
