@@ -36,8 +36,11 @@ jobs:
 
       - store_artifacts:
           path: app/build/outputs/apk/app-debug.apk
-          #destination: app-debug.apk
-          destination: reports
+          destination: app-debug.apk
+
+      - run:
+          name: Copy deliverables
+          command: cp -r app/build/outputs $CIRCLE_ARTIFACTS
 
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
