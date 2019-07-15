@@ -40,10 +40,3 @@ jobs:
 
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
-
-    # コンパイル
-  compile:
-  override:
-    - ./gradlew assembleDebug
-    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
