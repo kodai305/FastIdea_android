@@ -13,22 +13,37 @@ jobs:
 #      - run:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
 #         command: sudo chmod +x ./gradlew
-#      - run:
-#          name: licenses
-#          command: /opt/android/sdk/tools/bin/sdkmanager --licenses # from "docker run"
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
+      
       - save_cache:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      
       - run:
           name: Run Tests
           command: ./gradlew lint test
+
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
           path: app/build/reports
           destination: reports
+
+      - run:
+          name: Build apk
+          command: ./gradlew :app:assembleDebug
+
+      - store_artifacts:
+          path: app/build/outputs/apk/app-debug.apk
+          destination: app-debug.apk
+
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
+
+    # コンパイル
+  compile:
+  override:
+    - ./gradlew assembleDebug
+    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
