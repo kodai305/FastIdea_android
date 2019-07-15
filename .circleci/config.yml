@@ -40,7 +40,7 @@ jobs:
 
       - run:
           name: Copy deliverables
-          command: cp -r app/build/outputs $CIRCLE_ARTIFACTS
+          command: ls app/build/outputs
 
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
