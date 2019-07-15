@@ -13,9 +13,9 @@ jobs:
 #      - run:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
 #         command: sudo chmod +x ./gradlew
-      - run:
-          name: licenses
-          command: /opt/android/sdk/tools/bin/sdkmanager --licenses # from "docker run"
+#      - run:
+#          name: licenses
+#          command: /opt/android/sdk/tools/bin/sdkmanager --licenses # from "docker run"
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
