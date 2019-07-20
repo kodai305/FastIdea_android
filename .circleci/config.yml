@@ -14,9 +14,7 @@ jobs:
       - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#      - run:
-#         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-#         command: sudo chmod +x ./gradlew
+
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
@@ -44,3 +42,37 @@ jobs:
       
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
+      
+      - persist_to_workspace:
+          root: app/build/outputs/apk/
+          paths:
+            - debug
+
+
+  deploy:
+    working_directory: app/build/outputs/apk/
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - attach_workspace:
+          at: app/build/outputs/apk/
+      #- checkout
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync ./app-debug.apk s3://tech-book-review-site --delete
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+	    - build
+	  filters:
+	    branches:
+	      only: master
+        
