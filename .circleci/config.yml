@@ -44,25 +44,25 @@ jobs:
           path: app/build/test-results
       
       - persist_to_workspace:
-          root: app/build/outputs/apk/
+          root: ~/code
           paths:
             - debug
 
 
   deploy:
-    working_directory: app/build/outputs/apk/
+    working_directory: ~/code
     docker:
       - image: circleci/python:3.6.4
     steps:
       - attach_workspace:
-          at: app/build/outputs/apk/
+          at: ~/code
       #- checkout
       - run:
           name: Install awscli
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync ./app-debug.apk s3://tech-book-review-site --delete
+          command: aws s3 sync ./app/build/outputs/apk/debug/app-debug.apk s3://tech-book-review-site --delete
 
 workflows:
   version: 2
