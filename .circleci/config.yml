@@ -62,7 +62,7 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync ./app/build/outputs/apk/debug/app-debug.apk s3://tech-book-review-site --delete
+          command: aws s3 sync ./app/build/outputs/apk/debug s3://fastidea-android-apk --delete
 
 workflows:
   version: 2
