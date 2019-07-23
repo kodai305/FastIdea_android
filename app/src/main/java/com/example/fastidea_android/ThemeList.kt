@@ -11,12 +11,18 @@ class ThemeList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_list)
 
+        // トップ画面からの遷移時に受け取ったMETHODNAMEを取得
         methodName.text = intent.getStringExtra(TopPage.METHODNAME)
 
+        // 上のバーの左端に戻るボタンを表示
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // METHODNAMEを取得出来たかの確認用
+        // TODO:実装が進んだら消す
         supportActionBar?.title = "ThemeList"
     }
 
+    // 上のバーの戻るボタンの処理
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> finish()

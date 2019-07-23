@@ -15,12 +15,15 @@ class TopPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top_page)
 
+        // 「しりとり」ボタンタップ時の処理
         toSiritoriThemeListButton.setOnClickListener {
+            // テーマ一覧のActivityにMETHODNAMEを渡して遷移
             val intent = Intent(this, ThemeList::class.java)
             intent.putExtra(METHODNAME, "Siritori")
             startActivity(intent)
         }
 
+        //「まんだら」ボタンタップ時の処理
         toMandaraThemeList.setOnClickListener {
             val intent = Intent(this, ThemeList::class.java)
             intent.putExtra(METHODNAME, "Mandara")
