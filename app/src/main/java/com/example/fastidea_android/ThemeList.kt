@@ -11,8 +11,8 @@ class ThemeList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_list)
 
-        // トップ画面からの遷移時に受け取ったMETHODNAMEを取得
-        methodName.text = intent.getStringExtra(TopPage.METHODNAME)
+        // トップ画面からの遷移時に受け取ったMETHOD_NAMEを取得
+        methodName.text = intent.getStringExtra(KeyManager.METHOD_NAME)
 
         // 上のバーの左端に戻るボタンを表示
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
