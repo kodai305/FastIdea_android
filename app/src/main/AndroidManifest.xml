@@ -10,6 +10,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".Siritori">
+        </activity>
+        <activity android:name=".Mandara">
+        </activity>
         <activity android:name=".InputTheme">
         </activity>
         <activity android:name=".TopPage">
