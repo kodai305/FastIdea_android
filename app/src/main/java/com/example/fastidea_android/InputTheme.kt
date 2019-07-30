@@ -22,10 +22,17 @@ class InputTheme : AppCompatActivity() {
         val button = findViewById<Button>(R.id.create_theme_button)
         button.setOnClickListener {
             val intent: Intent
-            if (glob.METHOD_NAME == "Siritori") {
-                intent = Intent(this, Siritori::class.java)
-            } else {
-                intent = Intent(this, Mandara::class.java)
+            when(glob.METHOD_NAME){
+                "Siritori" -> {
+                    intent = Intent(this, Siritori::class.java)
+                }
+                "Mandara" -> {
+                    intent = Intent(this, Mandara::class.java)
+                }
+                else -> {
+                    //条件にヒットしない場合はトップに戻る
+                    intent = Intent(this, TopPage::class.java)
+                }
             }
             startActivity(intent)
         }
