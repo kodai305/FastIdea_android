@@ -3,12 +3,15 @@
           package="com.example.fastidea_android">
 
     <application
+            android:name=".Global"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".InputTheme">
+        </activity>
         <activity android:name=".TopPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
