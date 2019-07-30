@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FastIdea_android</string>
+    <string name="create_button">新規作成</string>
+    <string name="theme">テーマ</string>
+    <string name="method_name">TextView</string>
+    <string name="create">作成</string>
+    <string name="theme_tag">テーマ</string>
+    <string name="create_theme_button">作成</string>
 </resources>

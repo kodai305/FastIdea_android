@@ -7,26 +7,25 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_top_page.*
 
 class TopPage : AppCompatActivity() {
-    companion object {
-        const val METHODNAME = "com.fastIdea.methodName"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top_page)
+
+        // Global変数を使う
+        val glob = application as Global
 
         // 「しりとり」ボタンタップ時の処理
         toSiritoriThemeListButton.setOnClickListener {
             // テーマ一覧のActivityにMETHODNAMEを渡して遷移
             val intent = Intent(this, ThemeList::class.java)
-            intent.putExtra(METHODNAME, "Siritori")
+            glob.METHOD_NAME = "Siritori"
             startActivity(intent)
         }
 
         //「まんだら」ボタンタップ時の処理
         toMandaraThemeList.setOnClickListener {
             val intent = Intent(this, ThemeList::class.java)
-            intent.putExtra(METHODNAME, "Mandara")
+            glob.METHOD_NAME = "Mandara"
             startActivity(intent)
         }
     }
