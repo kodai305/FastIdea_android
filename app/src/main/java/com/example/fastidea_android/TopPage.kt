@@ -16,14 +16,14 @@ class TopPage : AppCompatActivity() {
         toSiritoriThemeListButton.setOnClickListener {
             // テーマ一覧のActivityにMETHODNAMEを渡して遷移
             val intent = Intent(this, ThemeList::class.java)
-            intent.putExtra(KeyManager.METHOD_NAME, "Siritori")
+            intent.putExtra(METHOD_NAME, "Siritori")
             startActivity(intent)
         }
 
         //「まんだら」ボタンタップ時の処理
         toMandaraThemeList.setOnClickListener {
             val intent = Intent(this, ThemeList::class.java)
-            intent.putExtra(KeyManager.METHOD_NAME, "Mandara")
+            intent.putExtra(METHOD_NAME, "Mandara")
             startActivity(intent)
         }
     }
