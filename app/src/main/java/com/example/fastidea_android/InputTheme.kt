@@ -23,13 +23,10 @@ class InputTheme : AppCompatActivity() {
         button.setOnClickListener {
             val intent: Intent
             when(glob.METHOD_NAME){
-                "Siritori" ->
-                    intent = Intent(this, Siritori::class.java)
-                "Mandara" ->
-                    intent = Intent(this, Mandara::class.java)
-                else ->
-                    //条件にヒットしない場合はトップに戻る
-                    intent = Intent(this, TopPage::class.java)
+                "Siritori" -> intent = Intent(this, Siritori::class.java)
+                "Mandara"  -> intent = Intent(this, Mandara::class.java)
+                //条件にヒットしない場合はトップに戻る
+                else       -> intent = Intent(this, TopPage::class.java)
             }
             startActivity(intent)
         }
