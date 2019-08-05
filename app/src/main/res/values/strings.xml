@@ -6,4 +6,5 @@
     <string name="create">作成</string>
     <string name="theme_tag">テーマ</string>
     <string name="create_theme_button">作成</string>
+    <string name="name">Name</string>
 </resources>
