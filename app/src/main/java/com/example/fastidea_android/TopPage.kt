@@ -18,9 +18,6 @@ class TopPage : AppCompatActivity() {
         // Global変数を使う
         val glob = application as Global
 
-        // Realmの初期化
-        Realm.init(this)
-
         // 「しりとり」ボタンタップ時の処理
         toSiritoriThemeListButton.setOnClickListener {
             // テーマ一覧のActivityにMETHODNAMEを渡して遷移

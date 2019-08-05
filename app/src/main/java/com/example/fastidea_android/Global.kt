@@ -12,7 +12,7 @@ class Global : Application() {
 
         // クラス名が微妙になってくるが、現状の設定(AndroidManifest.xml)ではここで呼ぶと
         // アプリ起動時に1回呼ぶことができるのでここで実行している.
-        //Realm.init(this)
+        Realm.init(this)
 
     }
 
