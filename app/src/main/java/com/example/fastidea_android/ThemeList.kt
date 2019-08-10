@@ -3,8 +3,12 @@ package com.example.fastidea_android
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Toast
 //import com.example.fastidea_android.TopPage.Companion.METHODNAME
 import kotlinx.android.synthetic.main.activity_theme_list.*
 
@@ -33,6 +37,21 @@ class ThemeList : AppCompatActivity() {
             val intent = Intent(this, InputTheme::class.java)
             startActivity(intent)
         }
+
+        // RecyclerViewをレイアウトから探す
+        val recyclerView = findViewById<RecyclerView>(R.id.themeList)
+
+        // タイムゾーンリスト用のアダプター
+        val adapter = ListThemeAdapter(this, glob.METHOD_NAME) { theme: String ->
+            Toast.makeText(this, theme, Toast.LENGTH_SHORT).show()
+        }
+        adapter.method = glob.METHOD_NAME
+
+        // RecyclerViewにアダプターをセットする
+        recyclerView.adapter = adapter
+
+        // 縦に直線的に表示するレイアウトマネージャーをセットする
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
     // 上のバーの戻るボタンの処理

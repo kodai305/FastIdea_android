@@ -15,7 +15,6 @@ class Mandara : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // デバック用
         setContentView(R.layout.activity_mandara)
 
 
@@ -50,31 +49,6 @@ class Mandara : AppCompatActivity() {
                 .add(R.id.container_rightbelow, newMandaraParentFragment(), "MandaraParentFragment")
                 .commit()
         }
-
-
-        /*
-        失敗作
-        val parent_tableLayout = TableLayout(this)
-        //parent_tableLayout.setGravity(Gravity.CENTER_HORIZONTAL); // android:gravity="center" 相当らしい
-        parent_tableLayout.setVerticalGravity(Gravity.CENTER)
-        parent_tableLayout.setHorizontalGravity(Gravity.CENTER)
-
-        setContentView(parent_tableLayout, ViewGroup.LayoutParams(300,300))
-        //setContentView(parent_tableLayout, ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT))
-
-        for (i in 1..3) {
-            val tableRow = TableRow(this)
-            for (j in 1..3) {
-                val editText = EditText(this)
-                editText.setWidth(100)
-                editText.setText(String.format("[%d番目]", ((i-1)+3)+j))
-
-                tableRow.addView(editText)
-
-            }
-            parent_tableLayout.addView(tableRow);
-        }
-        */
 
     }
 }
