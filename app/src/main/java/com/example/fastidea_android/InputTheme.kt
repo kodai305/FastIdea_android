@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import io.realm.Realm
-import io.realm.RealmObject
+import io.realm.RealmConfiguration
 import kotlinx.android.synthetic.main.activity_input_theme.*
 import java.util.*
 
 class InputTheme : AppCompatActivity() {
+
     // realm インスタンス生成
     var realm = Realm.getDefaultInstance()
 
@@ -37,23 +37,30 @@ class InputTheme : AppCompatActivity() {
             if(themeView.text != null){
                 theme = themeView.text.toString()
             }
-            // 挿入
-            insertMandaraObj(theme)
-
-            // 検索(テスト)
-            readMandaraObj()
 
             when (glob.METHOD_NAME) {
                 // DBのidを渡すべき??
 
                 // しりとり法の画面へ遷移
-                "Siritori" -> intent = Intent(this, Siritori::class.java)
+                "Siritori" -> {
+                    // 挿入
+                    insertSiritoriObj(theme)
+                    // 検索(テスト)
+                    readSiritoriObj()
+                    intent = Intent(this, Siritori::class.java)
+                }
 
                 // マンダラチャートの画面へ遷移
-                "Mandara"  -> intent = Intent(this, Mandara::class.java)
+                "Mandara"  -> {
+                    // 挿入
+                    insertMandaraObj(theme)
+                    // 検索(テスト)
+                    readMandaraObj()
+                    intent = Intent(this, Mandara::class.java)
+                }
 
                 //条件にヒットしない場合はトップに戻る
-                else       -> intent = Intent(this, TopPage::class.java)
+                else -> intent = Intent(this, TopPage::class.java)
             }
             startActivity(intent)
         }
@@ -77,5 +84,19 @@ class InputTheme : AppCompatActivity() {
     fun readMandaraObj() {
         var mandaraObj = realm.where(MandaraObj::class.java).findAll()
         Log.d("TAG",mandaraObj.toString())
+    }
+
+    fun insertSiritoriObj(theme: String) {
+        realm.executeTransaction {
+            val siritoriObj = SiritoriObj()
+            siritoriObj.id = UUID.randomUUID().toString();
+            siritoriObj.theme = theme
+            realm.insert(siritoriObj)
+        }
+    }
+
+    fun readSiritoriObj() {
+        var siritoriObj = realm.where(SiritoriObj::class.java).findAll()
+        Log.d("TAG",siritoriObj.toString())
     }
 }

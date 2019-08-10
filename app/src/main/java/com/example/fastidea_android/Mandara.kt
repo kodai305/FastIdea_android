@@ -2,6 +2,7 @@ package com.example.fastidea_android
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TableLayout
@@ -9,7 +10,6 @@ import android.view.ViewGroup.LayoutParams.FILL_PARENT
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.EditText
 import android.widget.TableRow
-
 
 class Mandara : AppCompatActivity() {
 
