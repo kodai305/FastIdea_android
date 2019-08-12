@@ -18,11 +18,11 @@ class Siritori : AppCompatActivity(), SiritoriDataListViewHolder.CellTappedListe
         siritori_main_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
-    private fun loadSiritoriDataList(): List<SiritoriData> {
+    private fun loadSiritoriDataList(): ArrayList<SiritoriData> {
 
         // TODO:Realmから呼び出したデータを格納する
-        val dataList = mutableListOf<SiritoriData>()
-        for (i in 0..49) {
+        val dataList = ArrayList<SiritoriData>()
+        for (i in 0..1) {
             val data = SiritoriData()
             data.keyWord = i.toString() + "番目のキーワード"
             data.idea = i.toString() + "番目のアイデア"
