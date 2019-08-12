@@ -61,47 +61,21 @@ class ListThemeAdapter(context: Context,methodName: String, private val onItemCl
         return viewHolder
     }
 
-    // XXX: どこで、しりとりとマンダラの分岐をさせるべきか
-    // これだと関数の返り値にSiritoriObjにするしかないので、呼ぶ側で分岐しないといけない
-    // Opt1: 呼ぶ側で分岐
-    // Opt2: getThemeListで分岐、themeArrayのようなものを作って返すようにする
     fun getSiritoriThemeList(): RealmResults<SiritoriObj>? {
-        var siritoriObjs = realm.where(SiritoriObj::class.java).findAll()
+        val siritoriObjs = realm.where(SiritoriObj::class.java).findAll()
         return siritoriObjs
     }
 
     fun getMandaraThemeList(): RealmResults<MandaraObj>? {
-        var mandaraObjs = realm.where(MandaraObj::class.java).findAll()
+        val mandaraObjs = realm.where(MandaraObj::class.java).findAll()
         return mandaraObjs
     }
 
-    /*
-    だめだった例
-    fun getThemes(): RealmResults<SiritoriObj>? {
-        when (method) {
-            "Siritori" -> {
-                return getSiritoriThemeList()
-            }
-            "Mandara" -> {
-                return getMandaraThemeList()
-            }
-            else -> {
-                return null
-            }
-        }
-    }
-    */
-
     fun getThemes(): MutableList<String> {
-        //var themes = null
-
-        Log.d("TAG", "method")
-        Log.d("TAG", method)
-
+        val themes = mutableListOf<String>()
         when (method) {
             "Siritori" -> {
-                val themes = mutableListOf<String>()
-                var SiritoriObjs = getSiritoriThemeList()
+                val SiritoriObjs = getSiritoriThemeList()
                 if (SiritoriObjs != null) {
                     SiritoriObjs.forEach {
                         Log.d("TAG", it.theme)
@@ -111,8 +85,7 @@ class ListThemeAdapter(context: Context,methodName: String, private val onItemCl
                 return themes
             }
             "Mandara" -> {
-                val themes = mutableListOf<String>()
-                var MandaraObjs = getMandaraThemeList()
+                val MandaraObjs = getMandaraThemeList()
                 if (MandaraObjs != null) {
                     MandaraObjs.forEach {
                         Log.d("TAG", it.theme)
@@ -122,7 +95,7 @@ class ListThemeAdapter(context: Context,methodName: String, private val onItemCl
                 return themes
             }
             else -> {
-                return mutableListOf()
+                return themes
             }
         }
     }
