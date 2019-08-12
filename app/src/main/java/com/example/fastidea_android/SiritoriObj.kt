@@ -11,17 +11,11 @@ open class SiritoriObj : RealmObject() {
 
     @Required
     open var theme : String = ""
-
+    open var SiritoriDataList: RealmList<SiritoriData>? = null
 }
 
-open class SiritoriMainList : RealmObject() {
-    @PrimaryKey
-    open var id : Int? = null
 
-    open var SiritoriMainDataList: RealmList<SiritoriMainData>? = null
-}
-
-open class SiritoriMainData : RealmObject() {
+open class SiritoriData : RealmObject() {
     @PrimaryKey
     open var id : Int? = null
 
