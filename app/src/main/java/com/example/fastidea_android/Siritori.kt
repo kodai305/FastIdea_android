@@ -22,12 +22,10 @@ class Siritori : AppCompatActivity(), SiritoriDataListViewHolder.CellTappedListe
 
         // TODO:Realmから呼び出したデータを格納する
         val dataList = ArrayList<SiritoriData>()
-        for (i in 0..1) {
-            val data = SiritoriData()
-            data.keyWord = i.toString() + "番目のキーワード"
-            data.idea = i.toString() + "番目のアイデア"
-            dataList.add(data)
-        }
+        val data = SiritoriData()
+        data.keyWord = "しりとり"
+        data.idea = ""
+        dataList.add(data)
         return dataList
     }
 
