@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 
 class SiritoriDataListViewAdapter(private val siritoriDataList: ArrayList<SiritoriData>, private val listener: SiritoriDataListViewHolder.CellTappedListener) : RecyclerView.Adapter<SiritoriDataListViewHolder>() {
 
@@ -25,7 +24,7 @@ class SiritoriDataListViewAdapter(private val siritoriDataList: ArrayList<Sirito
             holder.addKeywordButton.setOnClickListener{
                 // 一番下のキーワードを保存
                 this.saveLatestKeyword(holder.keywordView, position)
-                val newKeywordHeadString = this.getNextKeywordHeadString(holder.keywordView)
+                val newKeywordHeadString = this.getHeadStringFromKeywordView(holder.keywordView)
                 this.addKeyword(newKeywordHeadString)
             }
         } else {
@@ -56,10 +55,10 @@ class SiritoriDataListViewAdapter(private val siritoriDataList: ArrayList<Sirito
         notifyDataSetChanged() // これを忘れるとRecyclerViewにItemが反映されない
     }
 
-    // 一番下のキーワードのViewから最後尾の文字を取得
-    private fun getNextKeywordHeadString(latestKeywordView: EditText): String {
-        val latestKeyword = latestKeywordView.getText().toString()
-        val latestKeywordLength = latestKeywordView.getText().toString().length
+    // キーワードのViewから最後尾の文字を取得
+    private fun getHeadStringFromKeywordView(keywordView: EditText): String {
+        val latestKeyword = keywordView.getText().toString()
+        val latestKeywordLength = keywordView.getText().toString().length
         return latestKeyword.get(latestKeywordLength - 1).toString()
     }
 
