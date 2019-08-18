@@ -2,6 +2,7 @@ package com.example.fastidea_android
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 
 class SiritoriDataListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -13,4 +14,5 @@ class SiritoriDataListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemV
 
     val keywordView: EditText = itemView.findViewById(R.id.siritori_keyword)
     val ideaView: EditText = itemView.findViewById(R.id.siritori_idea)
+    val addKeywordButton: Button = itemView.findViewById(R.id.add_keyword)
 }
